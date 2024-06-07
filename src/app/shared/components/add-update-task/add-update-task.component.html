@@ -1,0 +1,39 @@
+<ion-content>
+  <app-header [isModal]="true" title=" Nuevo Ahorro"> </app-header>
+
+  <app-custom-input
+    [control]="form.controls.title"
+    type="text"
+    label="Titulo"
+  ></app-custom-input>
+
+  <div
+    class="validators"
+    *ngIf="form.controls.title.errors && form.controls.title.touched"
+  >
+    <div *ngIf="form.controls.title.errors?.['required']">
+      Ingresa nombre del ahorro
+    </div>
+    <div *ngIf="form.controls.title.errors?.['minlenght']">
+      Ingresa un nombre con almenos 4 caractres
+    </div>
+  </div>
+
+  <app-custom-input
+    [control]="form.controls.description"
+    type="text"
+    label="Valor"
+  ></app-custom-input>
+
+  <div
+    class="validators"
+    *ngIf="form.controls.description.errors && form.controls.description.dirty"
+  >
+    <div *ngIf="form.controls.description.errors?.['required']">
+      Ingresa valor del ahorro
+    </div>
+    <div *ngIf="form.controls.description.errors?.['minlenght']">
+      Ingresa un valor con almenos 6 caractres
+    </div>
+  </div>
+</ion-content>

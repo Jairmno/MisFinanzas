@@ -1,0 +1,34 @@
+<!-- <app-header color="light" title="Registro de Movimientos"></app-header>-->
+
+<ion-content>
+  <div class="contenedor-formulario">
+    <form #tab3="ngForm">
+      <app-custom-input
+        icon="calendar-number-outline"
+        label="Fecha"
+      ></app-custom-input>
+
+      <app-custom-input
+        icon="cash-outline"
+        type="text"
+        label="Valor"
+      ></app-custom-input>
+
+      <app-custom-input
+        class="ion-margin-top"
+        icon="grid-outline"
+        label="Concepto"
+      ></app-custom-input>
+
+      <!--Boton ingresar-->
+      <ion-button
+        class="ion-margin-top"
+        expand="block"
+        mode="ios"
+        type="submit"
+      >
+        Registrar
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,90 @@
+<app-header backButton="/tab1" title="Registro de Usuarios"></app-header>
+
+<ion-content>
+  <!-- Conexion input del email en formulario-->
+  <div class="d-flex-center">
+    <!-- se llama a la funcion submit para enviar los datos -->
+    <form
+      [formGroup]="form"
+      class="auth-form"
+      (ngSubmit)="submit()"
+      (keypress.enter)="submit()"
+    >
+      <!-- validacion de los datos ingresados en nombre-->
+
+      <app-custom-input
+        autocomplete="name"
+        icon="person-outline"
+        [control]="form.controls.name"
+        type="text"
+        label="Nombre"
+      ></app-custom-input>
+
+      <div
+        class="validators"
+        *ngIf="form.controls.name.errors && form.controls.name.touched"
+      >
+        <div *ngIf="form.controls.name.errors?.['required']">
+          Ingresa el nombre
+        </div>
+        <div *ngIf="form.controls.name.errors?.['minlenght']">
+          Ingresa un nombre con almenos 4 caractres
+        </div>
+      </div>
+
+      <!-- validacion de los datos ingresados en correo-->
+      <app-custom-input
+        class="ion-margin-top"
+        autocomplete="email"
+        icon="mail-outline"
+        [control]="form.controls.email"
+        type="email"
+        label="Correo"
+      ></app-custom-input>
+      <!-- validacion de los datos ingresados en correo-->
+      <div
+        class="validators"
+        *ngIf="form.controls.email.errors && form.controls.email.touched"
+      >
+        <div *ngIf="form.controls.email.errors?.['required']">
+          Ingresa el correo
+        </div>
+        <div *ngIf="form.controls.email.errors?.['email']">
+          Ingresa un correo valido
+        </div>
+      </div>
+
+      <!-- Conexion input de contraseña en formulario-->
+
+      <app-custom-input
+        class="ion-margin-top"
+        [control]="form.controls.password"
+        icon="lock-closed-outline"
+        type="password"
+        label="Contraseña"
+      ></app-custom-input>
+      <!-- validacion de los datos ingresados en contraseña-->
+      <div
+        class="validators"
+        *ngIf="form.controls.password.errors && form.controls.password.touched"
+      >
+        <div *ngIf="form.controls.password.errors?.['required']">
+          Ingresa la contraseña
+        </div>
+      </div>
+
+      <!--Boton Registro-->
+      <ion-button
+        expand="block"
+        mode="ios"
+        class="ion-margin-top"
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Regístrate
+      </ion-button>
+
+      <!--Prueba de conexion {{form.value | json}} -->
+    </form>
+  </div>
+</ion-content>
